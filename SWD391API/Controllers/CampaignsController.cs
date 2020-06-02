@@ -52,6 +52,28 @@ namespace SWD391API.Controllers
             
         }
 
+        [Route("[action]/{id}")]
+        [HttpGet]
+        public async Task<ActionResult> CampaignsOldest(int id)
+        {
+            if (id == -1)
+            {
+                var campaigns = _context.Campaigns
+                                .OrderByDescending(x => x.EndDate)
+                                .ToList();
+                return Ok(new { results = campaigns });
+            }
+            else
+            {
+                var campaigns = _context.Campaigns
+                                .OrderByDescending(c => c.EndDate)
+                                .Take(id)
+                                .ToList();
+                return Ok(new { results = campaigns });
+            }
+
+        }
+
 
         // PUT: api/Campaigns/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
