@@ -32,11 +32,11 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/Carelesses/5
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<Carelesses>>> GetCarelesses(string userId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Carelesses>>> GetCarelesses(string id)
         {
             var careless = _context.Carelesses
-                           .Where(c=>c.UserId.Equals(userId))
+                           .Where(c=>c.UserId.Equals(id))
                            .OrderByDescending(c => c.Count)
                            .Take(3)
                            .ToList();
