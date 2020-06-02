@@ -42,9 +42,9 @@ namespace SWD391API.Controllers
                            .ToList();
             return careless;
         }
-
+        [Route("[action]/{id}")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Carelesses>>> GetCarelessesById(int id)
+        public async Task<ActionResult<IEnumerable<Carelesses>>> MostPopular(int id)
         {
             var careless = _context.Carelesses
                            .OrderByDescending(c => c.Count)
