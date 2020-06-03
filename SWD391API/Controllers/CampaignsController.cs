@@ -30,11 +30,11 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/CampaignsNewest/5
-        [Route("[action]/{Id}")]
+        [Route("[action]/{uid}")]
         [HttpGet]
-        public async Task<ActionResult> CampaignsTest(int Id)
+        public async Task<ActionResult> CampaignsNewest(int uid)
         {
-            if (id == -1) 
+            if (uid == -1) 
             {
                 var campaigns = _context.Campaigns                       
                                 .OrderByDescending(x => x.StartDate)
