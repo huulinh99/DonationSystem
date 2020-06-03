@@ -30,9 +30,9 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/CampaignsNewest/5
-        [Route("[action]/{id}")]
+        [Route("[action]/{Id}")]
         [HttpGet]
-        public async Task<ActionResult> CampaignsTest(int id)
+        public async Task<ActionResult> CampaignsTest(int Id)
         {
             if (id == -1) 
             {
