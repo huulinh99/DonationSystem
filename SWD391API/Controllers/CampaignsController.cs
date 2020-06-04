@@ -10,7 +10,7 @@ using SWD391API.Models;
 
 namespace SWD391API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CampaignsController : ControllerBase
     {
@@ -30,7 +30,8 @@ namespace SWD391API.Controllers
         }
 
         // GET: campaigns/CampaignsNewest/5
-        [HttpGet("{id}")]
+        [Route("[action]/{id}")]
+        [HttpGet]
         public async Task<ActionResult> CampaignsNewest(int id)
         {
             if (id == -1) 
@@ -46,14 +47,16 @@ namespace SWD391API.Controllers
                                 .Take(id)
                                  .Include(s => s.User)
                                  .Select(s => new {
-                                     firsrName = s.User.FirstName, 
+                                     firsrName = s.User.FirstName,
                                      lastName = s.User.LastName,
-                                     cmpid = s.CampaignId,
-                                     cmpName = s.CampaignName
-
+                                     cammpaignId = s.CampaignId,
+                                     campaignName = s.CampaignName,
+                                     careless = s.Carelesses.Count,
+                                     startDate = s.StartDate,
+                                     endDate = s.EndDate
                                  })
                                 .ToList();
-                return Ok(new { results = campaigns });
+                return Ok(new { campaigns });
             }
             
         }

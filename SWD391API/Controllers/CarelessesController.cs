@@ -42,15 +42,15 @@ namespace SWD391API.Controllers
                            .ToList();
             return careless;
         }
-        [Route("[action]/{id}")]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Carelesses>>> MostPopular(int id)
-        {
-            var careless = _context.Carelesses
-                           .OrderByDescending(c => c.Count)
-                           .ToList();
-            return careless;
-        }
+        //[Route("[action]/{id}")]
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<IEnumerable<Carelesses>>> MostPopular(int id)
+        //{
+        //    var careless = _context.Carelesses
+        //                   .OrderByDescending(c => c.Count)
+        //                   .ToList();
+        //    return careless;
+        //}
 
         // PUT: api/Carelesses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
