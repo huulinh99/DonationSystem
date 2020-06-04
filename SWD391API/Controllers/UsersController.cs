@@ -21,9 +21,9 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/Users
-        [Route("[action]/{id}")]
+        [Route("[action]")]
         [HttpGet]
-        public async Task<ActionResult> UserMostFavourite(string userId)
+        public async Task<ActionResult> UserMostFavourite()
         {
 
             var user = _context.Users.FromSqlRaw($"Select top 1 * from Users  u where u.UserId=( select top 1 " +
