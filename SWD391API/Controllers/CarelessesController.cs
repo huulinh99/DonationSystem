@@ -32,16 +32,16 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/Carelesses/5
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<Carelesses>>> GetCarelesses(string userId)
-        {
-            var careless = _context.Carelesses
-                           .Where(c=>c.UserId.Equals(userId))
-                           .OrderByDescending(c => c.Count)
-                           .Take(3)
-                           .ToList();
-            return careless;
-        }
+        //[HttpGet("{userId}")]
+        //public async Task<ActionResult<IEnumerable<Carelesses>>> GetCarelesses(string userId)
+        //{
+        //    var careless = _context.Carelesses
+        //                   .Where(c=>c.UserId.Equals(userId))
+        //                   .OrderByDescending(c => c.Count)
+        //                   .Take(3)
+        //                   .ToList();
+        //    return careless;
+        //}
         //[Route("[action]/{id}")]
         //[HttpGet("{id}")]
         //public async Task<ActionResult<IEnumerable<Carelesses>>> MostPopular(int id)

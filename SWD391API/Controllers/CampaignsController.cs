@@ -47,7 +47,7 @@ namespace SWD391API.Controllers
                                 .Take(id)
                                  .Include(s => s.User)
                                  .Select(s => new {
-                                     firsrName = s.User.FirstName,
+                                     firstName = s.User.FirstName,
                                      lastName = s.User.LastName,
                                      cammpaignId = s.CampaignId,
                                      campaignName = s.CampaignName,
