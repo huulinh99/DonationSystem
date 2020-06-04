@@ -36,10 +36,20 @@ namespace SWD391API.Controllers
         {
             if (id == -1) 
             {
-                var campaigns = _context.Campaigns                       
-                                .OrderByDescending(x => x.StartDate)
+                var campaigns = _context.Campaigns.OrderByDescending(c => c.StartDate)
+                                .Take(id)
+                                 .Include(s => s.User)
+                                 .Select(s => new {
+                                     firstName = s.User.FirstName,
+                                     lastName = s.User.LastName,
+                                     cammpaignId = s.CampaignId,
+                                     campaignName = s.CampaignName,
+                                     careless = s.Carelesses.Count,
+                                     startDate = s.StartDate,
+                                     endDate = s.EndDate
+                                 })
                                 .ToList();
-                return Ok(new { results = campaigns });
+                return Ok(campaigns);
             }
             else
             {
