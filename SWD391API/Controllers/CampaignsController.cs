@@ -56,7 +56,7 @@ namespace SWD391API.Controllers
                                      endDate = s.EndDate
                                  })
                                 .ToList();
-                return Ok(new { campaigns });
+                return Ok(campaigns);
             }
             
         }
