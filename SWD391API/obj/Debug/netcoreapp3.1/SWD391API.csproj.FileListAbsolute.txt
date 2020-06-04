@@ -163,13 +163,6 @@ C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Swashbuc
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Autofac.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Raven.Abstractions.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Raven.Client.Lightweight.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Sparrow.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\Raven.Database.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Private.ServiceModel.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\runtimes\win7\lib\netstandard1.3\System.Private.ServiceModel.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Debug\netcoreapp3.1\SWD391API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Debug\netcoreapp3.1\SWD391API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Debug\netcoreapp3.1\SWD391API.Views.dll

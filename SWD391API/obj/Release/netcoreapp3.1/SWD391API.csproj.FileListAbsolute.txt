@@ -56,10 +56,6 @@ C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Micros
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\NuGet.Frameworks.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Raven.Abstractions.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Raven.Client.Lightweight.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Sparrow.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\Raven.Database.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\SQLitePCLRaw.core.dll
@@ -80,7 +76,6 @@ C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Drawing.Common.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.ServiceModel.Primitives.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Text.Json.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
@@ -156,8 +151,6 @@ C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtim
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Private.ServiceModel.dll
-C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\win7\lib\netstandard1.3\System.Private.ServiceModel.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

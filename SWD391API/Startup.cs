@@ -10,7 +10,6 @@ using SWD391API.Models;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Raven.Database.Server.WebApi;
 
 namespace SWD391API
 {

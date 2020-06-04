@@ -29,7 +29,7 @@ namespace SWD391API.Controllers
             return Ok(new { results = campaigns });
         }
 
-        // GET: api/CampaignsNewest/5
+        // GET: campaigns/CampaignsNewest/5
         [Route("[action]/{id}")]
         [HttpGet]
         public async Task<ActionResult> CampaignsNewest(int id)
@@ -43,9 +43,16 @@ namespace SWD391API.Controllers
             }
             else
             {
-                var campaigns = _context.Campaigns
-                                .OrderByDescending(c => c.StartDate)
+                var campaigns = _context.Campaigns.OrderByDescending(c => c.StartDate)
                                 .Take(id)
+                                 .Include(s => s.User)
+                                 .Select(s => new {
+                                     firsrName = s.User.FirstName, 
+                                     lastName = s.User.LastName,
+                                     cmpid = s.CampaignId,
+                                     cmpName = s.CampaignName
+
+                                 })
                                 .ToList();
                 return Ok(new { results = campaigns });
             }
