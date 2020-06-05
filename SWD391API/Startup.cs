@@ -76,7 +76,6 @@ namespace SWD391API
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("v1/swagger.json", "My API V1");
-                    c.RoutePrefix = "swagger";
                 });
 
             }
