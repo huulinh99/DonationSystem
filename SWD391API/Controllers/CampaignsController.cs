@@ -30,11 +30,11 @@ namespace SWD391API.Controllers
         }
 
         // GET: campaigns/CampaignsNewest/5
-        [Route("[action]/{Id}")]
+        [Route("[action]/{id}")]
         [HttpGet]
-        public async Task<ActionResult> CampaignsNewest(int Id)
+        public async Task<ActionResult> CampaignsNewest(int id)
         {
-            if (Id == -1) 
+            if (id == -1) 
             {
                 var campaigns = _context.Campaigns.OrderByDescending(c => c.StartDate)
                                  .Include(s => s.User)
@@ -53,7 +53,7 @@ namespace SWD391API.Controllers
             else
             {
                 var campaigns = _context.Campaigns.OrderByDescending(c => c.StartDate)
-                                .Take(Id)
+                                .Take(id)
                                  .Include(s => s.User)
                                  .Select(s => new {
                                      firstName = s.User.FirstName,
