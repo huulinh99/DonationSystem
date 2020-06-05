@@ -8,7 +8,7 @@
     <DocumentationFile>C:\Users\Admin\source\repos\SWD391API\SWD391API\SWD391API.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
     <WarningLevel>2</WarningLevel>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
