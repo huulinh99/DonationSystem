@@ -9,7 +9,7 @@ using SWD391API.Models;
 
 namespace SWD391API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {

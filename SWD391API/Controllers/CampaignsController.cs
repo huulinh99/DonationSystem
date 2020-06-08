@@ -45,7 +45,8 @@ namespace SWD391API.Controllers
                                      campaignName = s.CampaignName,
                                      careless = s.Carelesses.Count,
                                      startDate = s.StartDate,
-                                     endDate = s.EndDate
+                                     endDate = s.EndDate,
+                                     description = s.Description
                                  })
                                 .ToList();
                 return Ok(campaigns);
@@ -62,7 +63,8 @@ namespace SWD391API.Controllers
                                      campaignName = s.CampaignName,
                                      careless = s.Carelesses.Count,
                                      startDate = s.StartDate,
-                                     endDate = s.EndDate
+                                     endDate = s.EndDate,
+                                     description = s.Description
                                  })
                                 .ToList();
                 return Ok(campaigns);
