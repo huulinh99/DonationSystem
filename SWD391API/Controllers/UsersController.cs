@@ -26,7 +26,9 @@ namespace SWD391API.Controllers
         public ActionResult UserMostFavourite()
         {
 
-            var user = _context.Users.Include(u => new { u.Campaigns, u.Carelesses }).FromSql('Select COUNT(c.UserId) as totalCampaigns, (SELECT Count(ca.CampaignId) from Carelesses ca where ca.UserId=(select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc)) as totalLikes from Users u join Campaigns c on u.UserId= c.UserId where u.UserId=( select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc)').ToList();
+            var user = _context.Users
+                                     .FromSqlRaw("Select COUNT(c.UserId) as totalCampaigns, (SELECT Count(ca.CampaignId) from Carelesses ca where ca.UserId=(select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc)) as totalLikes from Users u join Campaigns c on u.UserId= c.UserId where u.UserId=( select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc)")
+                                     .ToList();
             
             return Ok(user);
         }
@@ -36,7 +38,7 @@ namespace SWD391API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers(string userId)
         {
-            var users =  _context.Users.Where(u=>u.UserId.Equals(userId)).ToList();         
+            var users =  _context.Users.Fr        
             return users;
         }
 
