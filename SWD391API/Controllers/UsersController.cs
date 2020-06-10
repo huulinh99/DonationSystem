@@ -25,7 +25,7 @@ namespace SWD391API.Controllers
         [HttpGet]
         public async Task<ActionResult> UserMostFavourite()
         {
-            var user = _context.Users.FromSqlRaw("Select top 1 * from Users  u where u.UserId=( select top 1 UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
+            var user = _context.Users.FromSqlRaw("Select top 1 u.UserId,u.FirstName,u.LastName from Users  u where u.UserId=( select top 1 UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
 
             return Ok( user);
         }
