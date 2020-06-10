@@ -26,14 +26,13 @@ namespace SWD391API.Controllers
         public async Task<ActionResult> UserMostFavourite()
         {
 
-            var user = _context.Users.FromSqlRaw($"Select u.UserId,u.FirstName,u.LastName,COUNT(c.UserId) " +
-                $"as totalCampaigns, (SELECT Count(ca.CampaignId) from Carelesses ca " +
+            var user = _context.Users.FromSqlRaw($"Select u.UserId,u.FirstName,u.LastName " +
+                $", (SELECT Count(ca.CampaignId) from Carelesses ca " +
                 $"where ca.UserId=(select top 1 UserId From Carelesses Group by UserId" +
                 $" Order by COUNT(CampaignId) Desc)) as totalLikes from Users u join " +
                 $"Campaigns c on u.UserId= c.UserId where u.UserId=( " +
                 $"select top 1 UserId From Carelesses Group by UserId " +
                 $"Order by COUNT(CampaignId) Desc) GROUP BY u.UserId,u.FirstName,u.LastName").ToList();
-
             return Ok( user);
         }
         [Route("[action]/{userId}")]
