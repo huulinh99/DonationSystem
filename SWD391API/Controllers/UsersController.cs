@@ -25,7 +25,18 @@ namespace SWD391API.Controllers
         [HttpGet]
         public ActionResult UserMostFavourite()
         {
-            var user = _context.Users.FromSqlRaw("Select UserId,FirstName,LastName from Users where UserId=( select top 1 UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
+            var user = _context.Campaigns
+                       .Include(u=>u.User)
+                       .Select(c => new
+                       {
+                           userId = c.User.UserId,
+                           firstName = c.User.FirstName,
+                           lastName = c.User.LastName,
+                           totalCampaign = c.UserId.Count(),
+                           totalLike = _context.Carelesses.FromSqlRaw($"SELECT Count(ca.CampaignId) from Carelesses ca where ca.UserId=(select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc)").ToList()  
+                       })                       
+                       .Where(u=>u.userId == _context.Carelesses.FromSqlRaw($"select top 1 UserId From Carelesses Group by UserId Order by COUNT(CampaignId) Desc").ToString())                      
+                       .ToList();
             return Ok(user);
         }
 
