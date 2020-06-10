@@ -26,18 +26,16 @@ namespace SWD391API.Controllers
         public async Task<ActionResult> UserMostFavourite()
         {
 
-            var user = _context.Users.FromSqlRaw($"Select u.UserId,u.FirstName,u.LastName " +
-                $", (SELECT Count(ca.CampaignId) from Carelesses ca " +
-                $"where ca.UserId=(select top 1 UserId From Carelesses Group by UserId" +
-                $" Order by COUNT(CampaignId) Desc)) as totalLikes from Users u join " +
-                $"Campaigns c on u.UserId= c.UserId where u.UserId=( " +
-                $"select top 1 UserId From Carelesses Group by UserId " +
-                $"Order by COUNT(CampaignId) Desc) GROUP BY u.UserId,u.FirstName,u.LastName").ToList();
+            var user = _context.Users.FromSqlRaw($"Select top 1 * from Users  u where u.UserId=( select top 1 " +
+                $"UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
+
             return Ok( user);
         }
+
+        // GET: api/Users/5
         [Route("[action]/{userId}")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> Users(string userId)
+        public async Task<ActionResult<IEnumerable<Users>>> GetUsers(string userId)
         {
             var users =  _context.Users.Where(u=>u.UserId.Equals(userId)).ToList();         
             return users;
@@ -46,9 +44,8 @@ namespace SWD391API.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [Route("[action]/{userId}")]
-        [HttpPut]
-        public async Task<IActionResult> Users(string id, Users users)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUsers(string id, Users users)
         {
             if (id != users.UserId)
             {
@@ -79,9 +76,8 @@ namespace SWD391API.Controllers
         // POST: api/Users
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [Route("[action]")]
         [HttpPost]
-        public async Task<ActionResult<Users>> Users(Users users)
+        public async Task<ActionResult<Users>> PostUsers(Users users)
         {
             _context.Users.Add(users);
             try
@@ -104,7 +100,7 @@ namespace SWD391API.Controllers
         }
 
         // DELETE: api/Users/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Users>> DeleteUsers(string id)
         {
             var users = await _context.Users.FindAsync(id);
