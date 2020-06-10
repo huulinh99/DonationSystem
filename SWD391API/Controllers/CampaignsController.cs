@@ -10,7 +10,7 @@ using SWD391API.Models;
 
 namespace SWD391API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CampaignsController : ControllerBase
     {
@@ -22,8 +22,9 @@ namespace SWD391API.Controllers
         }
 
         // GET: api/Campaigns
+        [Route("[action]")]
         [HttpGet]
-        public async Task<ActionResult> GetCampaigns()
+        public async Task<ActionResult> Campaigns()
         {
             var campaigns = _context.Campaigns.ToList();
             return Ok(new { results = campaigns });
@@ -31,7 +32,7 @@ namespace SWD391API.Controllers
 
         // GET: campaigns/CampaignsNewest/5
         [Route("[action]/{id}")]
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult> CampaignsNewest(int id)
         {
             if (id == -1) 
