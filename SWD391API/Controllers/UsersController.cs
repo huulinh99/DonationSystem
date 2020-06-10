@@ -23,11 +23,10 @@ namespace SWD391API.Controllers
         // GET: api/Users
         [Route("[action]")]
         [HttpGet]
-        public async Task<ActionResult> UserMostFavourite()
+        public ActionResult UserMostFavourite()
         {
-            var user = _context.Users.FromSqlRaw("Select top 1 u.UserId,u.FirstName,u.LastName from Users  u where u.UserId=( select top 1 UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
-
-            return Ok( user);
+            var user = _context.Users.FromSqlRaw("Select u.UserId,u.FirstName,u.LastName from Users u where u.UserId=( select top 1 UserId From Campaigns Group by UserId Order by Count(UserId) Desc)").ToList();
+            return Ok(user);
         }
 
         // GET: api/Users/5
