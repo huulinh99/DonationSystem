@@ -15,32 +15,50 @@ namespace SWD391API.Models
         {
         }
 
-        public virtual DbSet<Campaigns> Campaigns { get; set; }
-        public virtual DbSet<Carelesses> Carelesses { get; set; }
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<DonateDetails> DonateDetails { get; set; }
-        public virtual DbSet<GiftDetails> GiftDetails { get; set; }
-        public virtual DbSet<LoginMethods> LoginMethods { get; set; }
-        public virtual DbSet<UserRoles> UserRoles { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Author> Author { get; set; }
+        public virtual DbSet<Campaign> Campaign { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<DonateDetail> DonateDetail { get; set; }
+        public virtual DbSet<GiftDetail> GiftDetail { get; set; }
+        public virtual DbSet<LikeDetail> LikeDetail { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=SWD391;Trusted_Connection=True;User Id = sa; Password=123456");
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SWD391;Trusted_Connection=True; User Id=sa; Password=123456");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Campaigns>(entity =>
+            modelBuilder.Entity<Author>(entity =>
             {
-                entity.HasKey(e => e.CampaignId)
-                    .HasName("PK_Campaign");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.CampaignId).ValueGeneratedNever();
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.RoleId)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Campaign>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CampaignName)
                     .IsRequired()
@@ -56,48 +74,18 @@ namespace SWD391API.Models
 
                 entity.Property(e => e.StartDate).HasColumnType("date");
 
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Author)
+                    .WithMany(p => p.Campaign)
+                    .HasForeignKey(d => d.AuthorId)
+                    .HasConstraintName("FK_Campaign_Author");
 
                 entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Campaigns)
+                    .WithMany(p => p.Campaign)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK_Campaign_Category");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Campaigns)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Campaign_User");
             });
 
-            modelBuilder.Entity<Carelesses>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Date).HasColumnType("date");
-
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Campaign)
-                    .WithMany(p => p.Carelesses)
-                    .HasForeignKey(d => d.CampaignId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Careless_Campaign");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Carelesses)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Careless_User");
-            });
-
-            modelBuilder.Entity<Categories>(entity =>
+            modelBuilder.Entity<Category>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -106,7 +94,7 @@ namespace SWD391API.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<DonateDetails>(entity =>
+            modelBuilder.Entity<DonateDetail>(entity =>
             {
                 entity.HasIndex(e => e.GiftId)
                     .HasName("IX_DonateDetail")
@@ -120,27 +108,23 @@ namespace SWD391API.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.HasOne(d => d.Campaign)
-                    .WithMany(p => p.DonateDetails)
+                    .WithMany(p => p.DonateDetail)
                     .HasForeignKey(d => d.CampaignId)
                     .HasConstraintName("FK_DonateDetail_Campaign");
 
                 entity.HasOne(d => d.Gift)
-                    .WithOne(p => p.DonateDetails)
-                    .HasForeignKey<DonateDetails>(d => d.GiftId)
+                    .WithOne(p => p.DonateDetail)
+                    .HasForeignKey<DonateDetail>(d => d.GiftId)
                     .HasConstraintName("FK_DonateDetail_GiftDetail");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.DonateDetails)
+                    .WithMany(p => p.DonateDetail)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_DonateDetail_User");
+                    .HasConstraintName("FK_DonateDetail_DonateDetail");
             });
 
-            modelBuilder.Entity<GiftDetails>(entity =>
+            modelBuilder.Entity<GiftDetail>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -151,42 +135,26 @@ namespace SWD391API.Models
                 entity.Property(e => e.GiftName)
                     .HasMaxLength(300)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Campaign)
-                    .WithMany(p => p.GiftDetails)
-                    .HasForeignKey(d => d.CampaignId)
-                    .HasConstraintName("FK_GiftDetail_Campaign");
             });
 
-            modelBuilder.Entity<LoginMethods>(entity =>
+            modelBuilder.Entity<LikeDetail>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Campaign)
+                    .WithMany(p => p.LikeDetail)
+                    .HasForeignKey(d => d.CampaignId)
+                    .HasConstraintName("FK_LikeDetail_LikeDetail");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.LikeDetail)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_LikeDetail_User");
             });
 
-            modelBuilder.Entity<UserRoles>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.RoleId)
-                    .HasName("PK_UserRole");
-
-                entity.Property(e => e.RoleId).ValueGeneratedNever();
-
-                entity.Property(e => e.RoleName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Users>(entity =>
-            {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK_User");
-
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -208,16 +176,20 @@ namespace SWD391API.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.LoginMethod)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.LoginMethodId)
-                    .HasConstraintName("FK_User_LoginMethod");
-
                 entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Users)
+                    .WithMany(p => p.User)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_User_UserRole");
+            });
+
+            modelBuilder.Entity<UserRole>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.RoleName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

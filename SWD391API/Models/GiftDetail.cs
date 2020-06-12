@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SWD391API.Models
 {
-    public partial class GiftDetails
+    public partial class GiftDetail
     {
         public int Id { get; set; }
         public int? CampaignId { get; set; }
@@ -11,7 +11,6 @@ namespace SWD391API.Models
         public double? Amount { get; set; }
         public string Description { get; set; }
 
-        public virtual Campaigns Campaign { get; set; }
-        public virtual DonateDetails DonateDetails { get; set; }
+        public virtual DonateDetail DonateDetail { get; set; }
     }
 }

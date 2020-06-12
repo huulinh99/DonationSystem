@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace SWD391API.Models
 {
-    public partial class Categories
+    public partial class Category
     {
-        public Categories()
+        public Category()
         {
-            Campaigns = new HashSet<Campaigns>();
+            Campaign = new HashSet<Campaign>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Campaigns> Campaigns { get; set; }
+        public virtual ICollection<Campaign> Campaign { get; set; }
     }
 }
