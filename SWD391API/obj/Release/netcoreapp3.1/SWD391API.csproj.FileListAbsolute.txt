@@ -175,3 +175,5 @@ C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Release\netcoreapp3.1\SWD391
 C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Release\netcoreapp3.1\Razor\Views\Index.cshtml.g.cs
 C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Release\netcoreapp3.1\SWD391API.RazorTargetAssemblyInfo.cs
 C:\Users\Admin\source\repos\SWD391API\SWD391API\obj\Release\netcoreapp3.1\SWD391API.Views.pdb
+C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\Admin\source\repos\SWD391API\SWD391API\bin\Release\netcoreapp3.1\System.Web.Http.dll

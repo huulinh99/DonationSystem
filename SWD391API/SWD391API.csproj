@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>0b841c0e-2596-47d2-a560-f9e9d6ac2660</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}">
+    <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}" Condition="'$(MSBuildRuntimeType)' != 'Core'">
       <Guid>bee4bfec-6683-3e67-9167-3c0cbc68f40a</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>4</VersionMinor>
@@ -33,6 +35,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.4.1" />
